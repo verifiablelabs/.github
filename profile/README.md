@@ -9,7 +9,7 @@ before promotion — on hidden, out-of-distribution, and adversarial
 scenarios the agent has never seen.
 
 [![Website](https://img.shields.io/badge/website-verifiable--labs.com-blueviolet)](https://verifiable-labs.com)
-[![PyPI](https://img.shields.io/pypi/v/verifiable-labs?label=pypi%3Averifiable-labs&color=4c1)](https://pypi.org/project/verifiable-labs/)
+[![PyPI](https://img.shields.io/pypi/v/vlabs-sdk?label=pypi%3Avlabs-sdk&color=4c1)](https://pypi.org/project/vlabs-sdk/)
 [![Zenodo DOI](https://img.shields.io/badge/Zenodo%20DOI-10.5281%2Fzenodo.19786415-blue)](https://doi.org/10.5281/zenodo.19786415)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/verifiablelabs/verifiable-labs-envs/blob/main/LICENSE)
 
@@ -52,6 +52,19 @@ The evaluation platform (scenario generation, contamination firewall,
 anti-hack engine, billing, API) is private. Hidden evaluation content, gold
 answers, detection details, customer data, and raw traces are never
 published — that separation is what keeps the feedback clean.
+
+## Published evidence
+
+Public, **synthetic / redacted** demo evidence:
+
+- **Hugging Face dataset** — <https://huggingface.co/datasets/verifiablelabs/vlabs-clean-gate-evidence>
+- **Weights & Biases** (entity `verifiable-labs`): [clean-generalization-gate](https://wandb.ai/verifiable-labs/clean-generalization-gate) · [contamination-firewall](https://wandb.ai/verifiable-labs/contamination-firewall) · [anti-hack-engine](https://wandb.ai/verifiable-labs/anti-hack-engine) · [scenario-compiler](https://wandb.ai/verifiable-labs/scenario-compiler) · [runpod-costs](https://wandb.ai/verifiable-labs/runpod-costs)
+
+All published evidence is **synthetic / redacted** and is **not a training
+dataset**. It contains **no** customer data, hidden evaluations, gold
+answers, raw traces, private anti-hack traps, or private engine internals.
+
+Install the SDK: `pip install "vlabs-sdk==0.0.2"`
 
 ## Links
 
