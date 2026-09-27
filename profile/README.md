@@ -1,72 +1,59 @@
 # Verifiable Labs
 
-> Verifiable Labs builds clean feedback and promotion gates for increasingly general AI agents.
+**An AI model company working toward increasingly general, self-improving intelligence.**
 
-AI agents are getting better at passing the tests they were tuned on.
-Verifiable Labs helps agents improve through **generated clean feedback
-loops**, then verifies whether those improvements **truly generalize**
-before promotion — on hidden, out-of-distribution, and adversarial
-scenarios the agent has never seen.
+We develop learning methods and models that can improve through experience,
+with verification as a source of training feedback and a way to measure
+progress. We are a commercial research company, starting with coding models
+and working toward broader agents and, over the long term, AGI.
 
-[![Website](https://img.shields.io/badge/website-verifiable--labs.com-blueviolet)](https://verifiable-labs.com)
-[![PyPI](https://img.shields.io/pypi/v/vlabs-sdk?label=pypi%3Avlabs-sdk&color=4c1)](https://pypi.org/project/vlabs-sdk/)
-[![Zenodo DOI](https://img.shields.io/badge/Zenodo%20DOI-10.5281%2Fzenodo.19786415-blue)](https://doi.org/10.5281/zenodo.19786415)
-[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/verifiablelabs/verifiable-labs-envs/blob/main/LICENSE)
+[Website](https://verifiable-labs.com) ·
+[Research and evidence](https://github.com/verifiablelabs/vlabs-docs/blob/main/docs/product-overview.md) ·
+[Repository map](https://github.com/verifiablelabs/vlabs-docs/blob/main/docs/repository-map.md)
 
-## What we build
+## Research program
 
-- **Evaluate** — compile an evaluation contract from your agent's goal,
-  generate public / hidden / OOD / adversarial scenarios, and score clean
-  performance with contamination and hack-risk analysis.
-- **Gate** — a contamination-resistant promotion gate: clean
-  verified-generalization score (CleanVGS), generalization gap, and an
-  ACCEPT / REJECT / LIMITED_ROLLOUT decision with an assurance card.
-- **Improve** — human-reviewed improvement suggestions and candidate agent
-  configs, re-verified by the gate. Improvements are never auto-applied.
-- **Substrate** — clean feedback records, transfer metrics, failure memory,
-  and generated curriculum for teams building increasingly general agents.
+- **Coding models — implemented.** Verifier-guided post-training changes
+  the parameters of existing open-weight models through filtered supervised
+  fine-tuning. Our recorded experiments study training-data quality,
+  correctness, and transfer between coding tasks.
+- **Learning agents — active research.** We study curriculum selection,
+  persistent experience, feedback, and repeated model fitting. The current
+  experiments do not establish an autonomous-learning advantage on their
+  primary external transfer test.
+- **World models — planned.** We intend to study learning environment
+  dynamics and planning beyond coding. A trained world model is not a
+  current result.
 
-The privacy-preserving default is evaluate-only: nothing is exported,
-nothing is reused for training, and human review is required.
+AGI is a long-term research goal. Today's evidence comes from bounded
+small-model experiments; it does not demonstrate general intelligence or
+unbounded self-improvement. See the
+[current scope and evidence](https://github.com/verifiablelabs/vlabs-docs/blob/main/docs/product-overview.md).
 
-## Formal foundation
+## Open work
 
-Selected mathematical properties behind the contamination-resistant promotion gate are machine-verified in Lean 4. The implementation is property-tested against the formal specification.
-
-The Lean 4 development and its Python property-test mirror are open source
-in [verifiable-labs-envs](https://github.com/verifiablelabs/verifiable-labs-envs)
-(`formal/` and `src/verifiable_labs_envs/formal_spec/`).
-
-## Open core
-
-| Repository | What it holds |
+| Repository | Start here for |
 |---|---|
-| [verifiable-labs-envs](https://github.com/verifiablelabs/verifiable-labs-envs) | SDK, 25 procedurally generated environments, formal track, CLI (Apache-2.0) |
-| [vlabs-sdk](https://github.com/verifiablelabs/vlabs-sdk) | SDK contracts: run modes, provider interface, schemas (pointer) |
-| [vlabs-formal](https://github.com/verifiablelabs/vlabs-formal) | Lean 4 formal track + property-test mirror (pointer) |
-| [vlabs-examples](https://github.com/verifiablelabs/vlabs-examples) | Public-safe examples and quickstarts |
-| [vlabs-evidence](https://github.com/verifiablelabs/vlabs-evidence) | Redacted sample assurance cards and aggregate metrics |
-| [vlabs-docs](https://github.com/verifiablelabs/vlabs-docs) | Product and positioning documentation |
+| [vlabs-docs](https://github.com/verifiablelabs/vlabs-docs) | Research direction, current scope, repository ownership, and setup |
+| [vlabs-sdk](https://github.com/verifiablelabs/vlabs-sdk) | Evaluation contracts, typed evidence, and the promotion-gate CLI |
+| [vlabs-formal](https://github.com/verifiablelabs/vlabs-formal) | Selected Lean 4 specifications and a property-tested Python mirror |
+| [vlabs-evidence](https://github.com/verifiablelabs/vlabs-evidence) | Labelled public benchmark reports and separately labelled synthetic examples |
+| [vlabs-integrity](https://github.com/verifiablelabs/vlabs-integrity) | Public verifier-gameability audit tooling |
+| [vlabs-examples](https://github.com/verifiablelabs/vlabs-examples) | Synthetic examples for the public SDK |
 
-The evaluation platform (scenario generation, contamination firewall,
-anti-hack engine, billing, API) is private. Hidden evaluation content, gold
-answers, detection details, customer data, and raw traces are never
-published — that separation is what keeps the feedback clean.
+Model-training code, internal experiments, and protected evaluation content
+remain private. Public examples and historical verifier benchmarks are
+different evidence from a released model checkpoint. The
+[repository map](https://github.com/verifiablelabs/vlabs-docs/blob/main/docs/repository-map.md)
+identifies current homes and archived predecessors.
 
-## Published evidence
+## Formal scope
 
-Public, **synthetic / redacted** demo evidence:
+Selected mathematical properties behind the contamination-resistant
+promotion gate are machine-verified in Lean 4. A hand-maintained Python mirror
+has property tests derived from selected definitions; no mechanized
+code-to-proof parity is claimed. These results do not prove a model's
+generalization or the correctness of the surrounding service.
 
-- **Hugging Face dataset** — <https://huggingface.co/datasets/verifiablelabs/vlabs-clean-gate-evidence>
-- **Weights & Biases** (entity `verifiable-labs`): [clean-generalization-gate](https://wandb.ai/verifiable-labs/clean-generalization-gate) · [contamination-firewall](https://wandb.ai/verifiable-labs/contamination-firewall) · [anti-hack-engine](https://wandb.ai/verifiable-labs/anti-hack-engine) · [scenario-compiler](https://wandb.ai/verifiable-labs/scenario-compiler) · [runpod-costs](https://wandb.ai/verifiable-labs/runpod-costs)
-
-All published evidence is **synthetic / redacted** and is **not a training
-dataset**. It contains **no** customer data, hidden evaluations, gold
-answers, raw traces, private anti-hack traps, or private engine internals.
-
-Install the SDK: `pip install "vlabs-sdk==0.0.2"`
-
-## Links
-
-- Website: <https://verifiable-labs.com>
-- Security policy: see `SECURITY.md` in this repository
+[Try the public SDK locally](https://github.com/verifiablelabs/vlabs-docs/blob/main/docs/sdk-and-cli.md) ·
+[Security policy](https://github.com/verifiablelabs/.github/blob/main/SECURITY.md)
